@@ -6,6 +6,7 @@ import {
   useConnect,
   useSendTransaction,
   useWaitForTransactionReceipt,
+  useSwitchChain,
 } from "wagmi";
 
 import { Button } from "../ui/button";
@@ -29,6 +30,7 @@ export function CollectButton({
   const { isConnected, address } = useAccount();
   const { connect } = useConnect();
   const { sendTransactionAsync, isPending: isSending } = useSendTransaction();
+  const { switchChainAsync } = useSwitchChain();
   const [hash, setHash] = useState<`0x${string}`>();
   const [isLoadingTxData, setIsLoadingTxData] = useState(false);
 
@@ -78,7 +80,7 @@ export function CollectButton({
     } catch (error) {
       if (!isUserRejectionError(error)) {
         onError(
-          error instanceof Error ? error.message : "Something went wrong."
+          error instanceof Error ? error.message : "Something went wrong.",
         );
       }
       setHash(undefined);
@@ -104,10 +106,10 @@ export function CollectButton({
               ? "Collecting..."
               : "Adding..."
             : !isConnected && isMinting
-            ? "Connect"
-            : isMinting
-            ? "Collect"
-            : "Add Frame"}
+              ? "Connect"
+              : isMinting
+                ? "Collect"
+                : "Add Frame"}
         </Button>
       </div>
     </div>

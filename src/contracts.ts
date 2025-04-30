@@ -7,13 +7,8 @@ export function getMintTransaction(mintTo: Address) {
     to: config.contract.address,
     data: encodeFunctionData({
       abi: config.contract.abi,
-      functionName: "vectorMint721WithReferral",
-      args: [
-        BigInt(config.contract.vectorId),
-        1,
-        mintTo,
-        config.contract.referrer,
-      ],
+      functionName: "vectorMint721",
+      args: [BigInt(config.contract.vectorId), 1, mintTo],
     }),
     value: parseEther(config.priceEth),
     chainId: config.contract.chain.id,
