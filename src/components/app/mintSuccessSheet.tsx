@@ -1,9 +1,9 @@
-import { sdk } from '@farcaster/frame-sdk';
-import { useCallback } from 'react';
+import { sdk } from "@farcaster/frame-sdk";
+import { useCallback } from "react";
 
-import { Button } from '../ui/button';
-import { Drawer, DrawerContent, DrawerOverlay, DrawerTitle } from '../ui/drawer';
-import { CheckIcon } from '../core/icons';
+import { Button } from "../ui/button";
+import { Drawer, DrawerContent, DrawerOverlay, DrawerTitle } from "../ui/drawer";
+import { CheckIcon } from "../core/icons";
 
 interface MintSuccessSheetProps {
   isOpen: boolean;
@@ -12,12 +12,7 @@ interface MintSuccessSheetProps {
   imageUrl: string;
 }
 
-export function MintSuccessSheet({
-  isOpen,
-  onClose,
-  name,
-  imageUrl,
-}: MintSuccessSheetProps) {
+export function MintSuccessSheet({ isOpen, onClose, name, imageUrl }: MintSuccessSheetProps) {
   const handleAdd = useCallback(() => {
     onClose();
     sdk.actions.addFrame();
@@ -51,7 +46,9 @@ export function MintSuccessSheet({
         </div>
 
         <div className="mb-8 px-4">
-          <Button className="w-full" onClick={handleShare}>Share</Button>
+          <Button className="w-full" onClick={handleShare}>
+            Share
+          </Button>
         </div>
 
         <div className="pb-4" />

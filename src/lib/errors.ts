@@ -5,10 +5,10 @@ export function isUserRejectionError(error: unknown): boolean {
   if (error instanceof Error) {
     const message = error.message.toLowerCase();
     return (
-      message.includes('user rejected') ||
-      message.includes('user denied') ||
-      message.includes('rejected by user') ||
-      message.includes('transaction was rejected')
+      message.includes("user rejected") ||
+      message.includes("user denied") ||
+      message.includes("rejected by user") ||
+      message.includes("transaction was rejected")
     );
   }
   return false;

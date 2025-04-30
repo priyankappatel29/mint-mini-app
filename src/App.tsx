@@ -32,7 +32,7 @@ function App() {
           isMinting={config.isMinting}
         />
         <CollectButton
-          price={config.priceUsd}
+          priceEth={config.priceEth}
           isMinting={config.isMinting}
           onCollect={() => setShowSuccess(true)}
           onError={setError}

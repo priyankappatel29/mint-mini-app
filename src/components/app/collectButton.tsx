@@ -1,4 +1,4 @@
-import { sdk } from '@farcaster/frame-sdk';
+import { sdk } from "@farcaster/frame-sdk";
 import { farcasterFrame } from "@farcaster/frame-wagmi-connector";
 import { useState, useRef, useEffect } from "react";
 import {
@@ -9,24 +9,19 @@ import {
 } from "wagmi";
 
 import { Button } from "../ui/button";
-import { getMintTransaction } from '../../contracts';
-import { isUserRejectionError } from '../../lib/errors';
+import { getMintTransaction } from "../../contracts";
+import { isUserRejectionError } from "../../lib/errors";
 
 interface CollectButtonProps {
   timestamp?: number;
-  price: number;
+  priceEth: string;
   onCollect: () => void;
   onError: (error: string | undefined) => void;
   isMinting: boolean;
 }
 
-const formatUsdPrice = (priceInCents: number) => {
-  const dollars = (priceInCents / 100).toFixed(2);
-  return `$${dollars}`;
-};
-
 export function CollectButton({
-  price,
+  priceEth,
   onCollect,
   onError,
   isMinting,
@@ -76,7 +71,7 @@ export function CollectButton({
         to: tx.to,
         value: tx.value,
         data: tx.data,
-        chainId: 8453 // Base chain
+        chainId: tx.chainId,
       });
 
       setHash(hash);
@@ -99,23 +94,20 @@ export function CollectButton({
         {isMinting && (
           <div className="flex justify-between items-center mb-1 text-sm">
             <span className="text-muted text-sm">Cost</span>
-            <span className="text-foreground font-medium">
-              {formatUsdPrice(price)}
-            </span>
+            <span className="text-foreground font-medium">{priceEth} ETH</span>
           </div>
         )}
 
-        <Button
-          className="w-full"
-          onClick={handleClick}
-          disabled={isPending}
-        >
-          {isPending ? (
-            isMinting ? "Collecting..." : "Adding..."
-          ) : (
-            !isConnected && isMinting ? "Connect" :
-            isMinting ? "Collect" : "Add Frame"
-          )}
+        <Button className="w-full" onClick={handleClick} disabled={isPending}>
+          {isPending
+            ? isMinting
+              ? "Collecting..."
+              : "Adding..."
+            : !isConnected && isMinting
+            ? "Connect"
+            : isMinting
+            ? "Collect"
+            : "Add Frame"}
         </Button>
       </div>
     </div>
