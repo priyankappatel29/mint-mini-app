@@ -8,7 +8,7 @@ export const mintMetadata = {
   name: "Mini App Mint Demo",
   description:
     "A simple example of an onchain action in a Farcaster mini app. Tap the button below to mint this image.",
-  imageUrl: "/nft.png",
+  imageUrl: "https://mint-demo.replit.app/nft.png",
   creator: {
     name: "horsefacts.eth",
     fid: 3621,
@@ -83,13 +83,13 @@ export const contractConfig = {
  */
 export const embedConfig = {
   version: "next",
-  imageUrl: "/nft.png",
+  imageUrl: "https://mint-demo.replit.app/nft.png",
   button: {
     title: "Mint",
     action: {
       type: "launch_frame",
       name: "NFT Mint",
-      url: "https://your-app-url.com",
+      url: "https://mint-demo.replit.app/",
     },
   },
 } as const;
