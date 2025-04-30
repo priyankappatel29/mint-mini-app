@@ -7,19 +7,9 @@ function fcFrameMeta(): Plugin {
   return {
     name: "inject-fc-frame-meta",
     transformIndexHtml(html: string) {
-      return {
-        html,
-        tags: [
-          {
-            tag: "meta",
-            attrs: {
-              name: "fc:frame",
-              content: JSON.stringify(config.embed),
-            },
-            injectTo: "head",
-          },
-        ],
-      };
+      const embedJson = JSON.stringify(config.embed);
+      const metaTag = `<meta name="fc:frame" content='${embedJson}'>`;
+      return html.replace('</head>', `${metaTag}\n</head>`);
     },
   };
 }
