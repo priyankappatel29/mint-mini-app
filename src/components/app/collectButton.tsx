@@ -1,12 +1,13 @@
 import { sdk } from "@farcaster/frame-sdk";
 import { farcasterFrame } from "@farcaster/frame-wagmi-connector";
-import { useState, useRef, useEffect } from "react";
-import { useAccount, useConnect, useSendTransaction, useWaitForTransactionReceipt, useSwitchChain } from "wagmi";
+import { useEffect, useRef, useState } from "react";
+import { parseEther } from "viem";
+import { useAccount, useConnect, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 
-import { Button } from "../ui/button";
-import { AnimatedBorder } from "../ui/animatedBorder";
-import { getMintTransaction } from "../../contracts";
+import { contractConfig, mintMetadata } from "../../config";
 import { isUserRejectionError } from "../../lib/errors";
+import { AnimatedBorder } from "../ui/animatedBorder";
+import { Button } from "../ui/button";
 
 interface CollectButtonProps {
   timestamp?: number;
@@ -19,8 +20,7 @@ interface CollectButtonProps {
 export function CollectButton({ priceEth, onCollect, onError, isMinting }: CollectButtonProps) {
   const { isConnected, address } = useAccount();
   const { connect } = useConnect();
-  const { sendTransactionAsync, isPending: isSending } = useSendTransaction();
-  const { switchChainAsync } = useSwitchChain();
+  const { writeContractAsync, isPending: isWriting } = useWriteContract();
   const [hash, setHash] = useState<`0x${string}`>();
   const [isLoadingTxData, setIsLoadingTxData] = useState(false);
 
@@ -28,7 +28,7 @@ export function CollectButton({ priceEth, onCollect, onError, isMinting }: Colle
     hash,
   });
 
-  const isPending = isLoadingTxData || isSending || isConfirming;
+  const isPending = isLoadingTxData || isWriting || isConfirming;
 
   const successHandled = useRef(false);
 
@@ -58,12 +58,13 @@ export function CollectButton({ priceEth, onCollect, onError, isMinting }: Colle
 
       setIsLoadingTxData(true);
 
-      const tx = getMintTransaction(address);
-      const hash = await sendTransactionAsync({
-        to: tx.to,
-        value: tx.value,
-        data: tx.data,
-        chainId: tx.chainId,
+      const hash = await writeContractAsync({
+        address: contractConfig.address,
+        abi: contractConfig.abi,
+        functionName: "vectorMint721",
+        args: [BigInt(contractConfig.vectorId), 1n, address],
+        value: parseEther(mintMetadata.priceEth),
+        chainId: contractConfig.chain.id,
       });
 
       setHash(hash);

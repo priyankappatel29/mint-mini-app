@@ -1,5 +1,4 @@
 import { sdk } from "@farcaster/frame-sdk";
-import { config } from "../../config";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import { useCallback } from "react";
 
@@ -19,7 +18,7 @@ export function ArtworkInfo({ name, creator, chain, description, isMinting }: Ar
   const handleViewProfile = useCallback(() => {
     if (creator.fid) {
       sdk.actions.viewProfile({
-        fid: creator.fid
+        fid: creator.fid,
       });
     }
   }, [creator.fid]);

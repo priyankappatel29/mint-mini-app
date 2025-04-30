@@ -1,13 +1,11 @@
 import { sdk } from "@farcaster/frame-sdk";
 import { useEffect, useState } from "react";
 
-import { ArtworkImage } from "./components/app/artworkImage";
-import { ArtworkInfo } from "./components/app/artworkInfo";
+import { ArtworkCard } from "./components/app/artworkCard";
 import { CollectButton } from "./components/app/collectButton";
 import { MintErrorSheet } from "./components/app/mintErrorSheet";
 import { MintSuccessSheet } from "./components/app/mintSuccessSheet";
-import { Card } from "./components/ui/card";
-import { config } from "./config";
+import { mintMetadata } from "./config";
 
 function App() {
   useEffect(() => {
@@ -19,36 +17,31 @@ function App() {
 
   return (
     <div className="w-full min-h-screen flex flex-col">
-      <ArtworkImage imageUrl={config.imageUrl} name={config.name} />
-      <Card className="flex flex-col -mt-6 relative z-10 flex-grow pb-4">
-        <ArtworkInfo
-          name={config.name}
-          creator={{
-            name: config.creator.name,
-            profileImageUrl: config.creator.profileImageUrl,
-          }}
-          chain={config.chain}
-          description={config.description}
-          isMinting={config.isMinting}
-        />
+      <ArtworkCard
+        imageUrl={mintMetadata.imageUrl}
+        name={mintMetadata.name}
+        creator={{
+          name: mintMetadata.creator.name,
+          profileImageUrl: mintMetadata.creator.profileImageUrl,
+        }}
+        chain={mintMetadata.chain}
+        description={mintMetadata.description}
+        isMinting={mintMetadata.isMinting}
+      >
         <CollectButton
-          priceEth={config.priceEth}
-          isMinting={config.isMinting}
+          priceEth={mintMetadata.priceEth}
+          isMinting={mintMetadata.isMinting}
           onCollect={() => setShowSuccess(true)}
           onError={setError}
         />
-      </Card>
+      </ArtworkCard>
       <MintSuccessSheet
         isOpen={showSuccess}
         onClose={() => setShowSuccess(false)}
-        name={config.name}
-        imageUrl={config.imageUrl}
+        name={mintMetadata.name}
+        imageUrl={mintMetadata.imageUrl}
       />
-      <MintErrorSheet
-        isOpen={!!error}
-        onClose={() => setError(undefined)}
-        error={error}
-      />
+      <MintErrorSheet isOpen={!!error} onClose={() => setError(undefined)} error={error} />
     </div>
   );
 }

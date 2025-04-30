@@ -12,12 +12,7 @@ interface MintSuccessSheetProps {
   imageUrl: string;
 }
 
-export function MintSuccessSheet({
-  isOpen,
-  onClose,
-  name,
-  imageUrl,
-}: MintSuccessSheetProps) {
+export function MintSuccessSheet({ isOpen, onClose, name, imageUrl }: MintSuccessSheetProps) {
   const handleShare = useCallback(() => {
     sdk.actions.composeCast({
       text: `I just minted ${name}!`,
@@ -31,11 +26,7 @@ export function MintSuccessSheet({
 
         <div className="flex flex-col items-center pt-4 pb-8">
           <div className="flex items-center gap-1">
-            <CheckCircleIcon
-              className="text-[#43B748]"
-              stroke="#43B748"
-              strokeWidth={2}
-            />
+            <CheckCircleIcon className="text-[#43B748]" stroke="#43B748" strokeWidth={2} />
             <span className="text-2xl font-semibold">Collected</span>
           </div>
         </div>
@@ -43,11 +34,7 @@ export function MintSuccessSheet({
         <div className="max-w-[272px] mx-auto w-full">
           <div className="bg-mat rounded-xl p-2 shadow mb-4">
             <div className="relative aspect-square w-full rounded-lg overflow-hidden">
-              <img
-                src={imageUrl}
-                alt={name}
-                className="w-full h-full object-cover"
-              />
+              <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
