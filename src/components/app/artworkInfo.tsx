@@ -1,12 +1,14 @@
 import { sdk } from "@farcaster/frame-sdk";
 import { config } from "../../config";
 import { Avatar, AvatarImage } from "../ui/avatar";
+import { useCallback } from "react";
 
 interface ArtworkInfoProps {
   name: string;
   creator: {
     name: string;
     profileImageUrl?: string;
+    fid?: number;
   };
   chain: string;
   description?: string;
@@ -14,6 +16,14 @@ interface ArtworkInfoProps {
 }
 
 export function ArtworkInfo({ name, creator, chain, description, isMinting }: ArtworkInfoProps) {
+  const handleViewProfile = useCallback(() => {
+    if (creator.fid) {
+      sdk.actions.viewProfile({
+        fid: creator.fid
+      });
+    }
+  }, [creator.fid]);
+
   return (
     <div className="p-4">
       <div className="flex items-start justify-between mb-4">
@@ -22,12 +32,18 @@ export function ArtworkInfo({ name, creator, chain, description, isMinting }: Ar
           <div className="flex flex-row items-center gap-1">
             <div className="flex items-center gap-1">
               <span className="text-sm text-muted">by</span>
-              {creator.profileImageUrl && (
-                <Avatar className="h-4 w-4 bg-secondary rounded-full">
-                  <AvatarImage src={creator.profileImageUrl} alt={creator.name} />
-                </Avatar>
-              )}
-              <span className="text-sm">{creator.name}</span>
+              <button
+                type="button"
+                onClick={handleViewProfile}
+                className="flex items-center gap-1 hover:opacity-80 transition-opacity"
+              >
+                {creator.profileImageUrl && (
+                  <Avatar className="h-4 w-4 bg-secondary rounded-full">
+                    <AvatarImage src={creator.profileImageUrl} alt={creator.name} />
+                  </Avatar>
+                )}
+                <span className="text-sm">{creator.name}</span>
+              </button>
             </div>
             <div className="flex items-center gap-1">
               <span className="text-sm text-muted">on</span>

@@ -2,8 +2,8 @@ import { sdk } from "@farcaster/frame-sdk";
 import { useCallback } from "react";
 
 import { Button } from "../ui/button";
-import { Drawer, DrawerContent, DrawerOverlay, DrawerTitle } from "../ui/drawer";
-import { CheckIcon } from "../core/icons";
+import { Drawer, DrawerContent, DrawerTitle } from "../ui/drawer";
+import { CheckCircleIcon } from "../core/icons";
 
 interface MintSuccessSheetProps {
   isOpen: boolean;
@@ -12,27 +12,30 @@ interface MintSuccessSheetProps {
   imageUrl: string;
 }
 
-export function MintSuccessSheet({ isOpen, onClose, name, imageUrl }: MintSuccessSheetProps) {
-  const handleAdd = useCallback(() => {
-    onClose();
-    sdk.actions.addFrame();
-  }, [onClose]);
-
+export function MintSuccessSheet({
+  isOpen,
+  onClose,
+  name,
+  imageUrl,
+}: MintSuccessSheetProps) {
   const handleShare = useCallback(() => {
-    // Simple share URL generation
-    const url = `https://warpcast.com/~/compose?text=I just minted ${name}!`;
-    sdk.actions.openUrl(url);
+    sdk.actions.composeCast({
+      text: `I just minted ${name}!`,
+    });
   }, [name]);
 
   return (
-    <Drawer open={isOpen} onClose={onClose}>
-      <DrawerOverlay className="!bg-black/30 backdrop-blur-[7.5px]" />
+    <Drawer open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DrawerContent className="bg-card">
         <DrawerTitle className="sr-only">Collection Successful</DrawerTitle>
 
         <div className="flex flex-col items-center pt-4 pb-8">
           <div className="flex items-center gap-1">
-            <CheckIcon className="text-[#43B748]" stroke="#43B748" />
+            <CheckCircleIcon
+              className="text-[#43B748]"
+              stroke="#43B748"
+              strokeWidth={2}
+            />
             <span className="text-2xl font-semibold">Collected</span>
           </div>
         </div>
@@ -40,7 +43,11 @@ export function MintSuccessSheet({ isOpen, onClose, name, imageUrl }: MintSucces
         <div className="max-w-[272px] mx-auto w-full">
           <div className="bg-mat rounded-xl p-2 shadow mb-4">
             <div className="relative aspect-square w-full rounded-lg overflow-hidden">
-              <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
+              <img
+                src={imageUrl}
+                alt={name}
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>

@@ -1,17 +1,16 @@
-import { Drawer, DrawerContent, DrawerOverlay, DrawerTitle } from "../ui/drawer";
+import { Drawer, DrawerContent, DrawerTitle } from "../ui/drawer";
 import { Button } from "../ui/button";
 import { AlertIcon } from "../core/icons";
 
 interface MintErrorSheetProps {
   isOpen: boolean;
   onClose: () => void;
-  error: string;
+  error?: string;
 }
 
 export function MintErrorSheet({ isOpen, onClose, error }: MintErrorSheetProps) {
   return (
-    <Drawer open={isOpen} onClose={onClose}>
-      <DrawerOverlay className="!bg-black/30 backdrop-blur-[7.5px]" />
+    <Drawer open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DrawerContent className="bg-card">
         <DrawerTitle className="sr-only">Mint Error</DrawerTitle>
 
@@ -23,7 +22,7 @@ export function MintErrorSheet({ isOpen, onClose, error }: MintErrorSheetProps) 
         </div>
 
         <div className="px-4 mb-6">
-          <p className="text-center text-sm mb-4">{error}</p>
+          <p className="text-center text-sm mb-4">{error ?? ""}</p>
           <Button className="w-full" onClick={onClose}>
             Close
           </Button>

@@ -47,7 +47,7 @@ function App() {
       <MintErrorSheet
         isOpen={!!error}
         onClose={() => setError(undefined)}
-        error={error || ""}
+        error={error}
       />
     </div>
   );

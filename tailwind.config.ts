@@ -61,6 +61,15 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      animation: {
+        "border-slide": "border-slide 2s linear infinite",
+      },
+      keyframes: {
+        "border-slide": {
+          "0%": { strokeDashoffset: "0" },
+          "100%": { strokeDashoffset: "100" },
+        },
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

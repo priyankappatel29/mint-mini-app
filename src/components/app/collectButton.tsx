@@ -1,15 +1,10 @@
 import { sdk } from "@farcaster/frame-sdk";
 import { farcasterFrame } from "@farcaster/frame-wagmi-connector";
 import { useState, useRef, useEffect } from "react";
-import {
-  useAccount,
-  useConnect,
-  useSendTransaction,
-  useWaitForTransactionReceipt,
-  useSwitchChain,
-} from "wagmi";
+import { useAccount, useConnect, useSendTransaction, useWaitForTransactionReceipt, useSwitchChain } from "wagmi";
 
 import { Button } from "../ui/button";
+import { AnimatedBorder } from "../ui/animatedBorder";
 import { getMintTransaction } from "../../contracts";
 import { isUserRejectionError } from "../../lib/errors";
 
@@ -21,12 +16,7 @@ interface CollectButtonProps {
   isMinting: boolean;
 }
 
-export function CollectButton({
-  priceEth,
-  onCollect,
-  onError,
-  isMinting,
-}: CollectButtonProps) {
+export function CollectButton({ priceEth, onCollect, onError, isMinting }: CollectButtonProps) {
   const { isConnected, address } = useAccount();
   const { connect } = useConnect();
   const { sendTransactionAsync, isPending: isSending } = useSendTransaction();
@@ -79,9 +69,7 @@ export function CollectButton({
       setHash(hash);
     } catch (error) {
       if (!isUserRejectionError(error)) {
-        onError(
-          error instanceof Error ? error.message : "Something went wrong.",
-        );
+        onError(error instanceof Error ? error.message : "Something went wrong.");
       }
       setHash(undefined);
       successHandled.current = false;
@@ -100,17 +88,17 @@ export function CollectButton({
           </div>
         )}
 
-        <Button className="w-full" onClick={handleClick} disabled={isPending}>
-          {isPending
-            ? isMinting
-              ? "Collecting..."
-              : "Adding..."
-            : !isConnected && isMinting
-              ? "Connect"
-              : isMinting
-                ? "Collect"
-                : "Add Frame"}
-        </Button>
+        {isPending ? (
+          <AnimatedBorder>
+            <Button className="w-full relative bg-[var(--color-active)] text-[var(--color-active-foreground)]" disabled>
+              {isMinting ? "Collecting..." : "Adding..."}
+            </Button>
+          </AnimatedBorder>
+        ) : (
+          <Button className="w-full" onClick={handleClick} disabled={isPending}>
+            {!isConnected && isMinting ? "Connect" : isMinting ? "Collect" : "Add Frame"}
+          </Button>
+        )}
       </div>
     </div>
   );

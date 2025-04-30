@@ -4,7 +4,7 @@ import { base } from "viem/chains";
 export const config = {
   // Mint metadata
   name: "Mini App Mint Demo",
-  description: "A simple example of an onchain action in a Farcaster mini app.",
+  description: "A simple example of an onchain action in a Farcaster mini app. Tap the button below to collect this NFT.",
   imageUrl: "/nft.png",
   creator: {
     name: "horsefacts.eth",
