@@ -16,4 +16,4 @@ exposeLocalhost = true
 
 [[deployment.rewrites]]
 from = "/.well-known/*"
-to = "/.well-known/*"
+to = "/public/.well-known/*"
