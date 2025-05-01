@@ -13,3 +13,7 @@ publicDir = "dist"
 localPort = 5173
 externalPort = 80
 exposeLocalhost = true
+
+[[deployment.rewrites]]
+from = "/.well-known/*"
+to = "/.well-known/*"
