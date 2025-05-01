@@ -23,6 +23,7 @@ function App() {
         creator={{
           name: mintMetadata.creator.name,
           profileImageUrl: mintMetadata.creator.profileImageUrl,
+          fid: mintMetadata.creator.fid,
         }}
         chain={mintMetadata.chain}
         description={mintMetadata.description}
@@ -41,7 +42,11 @@ function App() {
         name={mintMetadata.name}
         imageUrl={mintMetadata.imageUrl}
       />
-      <MintErrorSheet isOpen={!!error} onClose={() => setError(undefined)} error={error} />
+      <MintErrorSheet
+        isOpen={!!error}
+        onClose={() => setError(undefined)}
+        error={error}
+      />
     </div>
   );
 }

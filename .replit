@@ -5,15 +5,10 @@ run = "pnpm run dev"
 channel = "stable-24_05"
 
 [deployment]
-deploymentTarget = "static"
-build = ["pnpm", "run", "build"]
-publicDir = "dist"
+run = "pnpm build && pnpm preview"
+deploymentTarget = "autoscale"
 
 [[ports]]
 localPort = 5173
 externalPort = 80
 exposeLocalhost = true
-
-[[deployment.rewrites]]
-from = "/.well-known/*"
-to = "/public/.well-known/*"
