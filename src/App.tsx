@@ -1,5 +1,5 @@
 import { sdk } from "@farcaster/frame-sdk";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { CollectButton } from "./components/app/collectButton";
 import { ArtworkCard } from "./components/app/artworkCard";
 import { MintErrorSheet } from "./components/app/mintErrorSheet";
