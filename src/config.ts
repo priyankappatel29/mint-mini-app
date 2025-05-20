@@ -9,7 +9,7 @@ export const mintMetadata = {
   name: "framed in blue #4",
   description:
     "i'll lead you up, to the highest heavens",
-  imageUrl: "/framedinblue4_v.png", // Ensure this path is correct if served from your frontend's public dir
+  imageUrl: "https://frames-in-blue.vercel.app/framedinblue4_v.png", // Ensure this path is correct if served from your frontend's public dir
   creator: {
     name: "priyanka",
     fid: 6373,
@@ -116,15 +116,15 @@ Farcaster Frame Embed Configuration
  */
 export const embedConfig = {
   version: "next",
-  imageUrl: "https://bbf7c36b-41d9-4f2c-89e4-effcddf0f0b6-00-3tr4td3x18yww.picard.replit.dev/framedinblue4.png", // This should be the direct URL to the image for the frame
+  imageUrl: "https://frames-in-blue.vercel.app/framedinblue4.png", // This should be the direct URL to the image for the frame
   button: {
     title: "collect",
     action: {
       type: "launch_frame", // This action type means clicking the button in Farcaster will open another frame
       name: "frames in blue",     // Name for the frame action
-      url: "https://bbf7c36b-41d9-4f2c-89e4-effcddf0f0b6-00-3tr4td3x18yww.picard.replit.dev/", // URL that serves the frame to be opened
-      // splashImageUrl: "/bluesplash.png",
-      // splashBackgroundColor: "#151515",
+      url: "https://frames-in-blue.vercel.app", // URL that serves the frame to be opened
+      splashImageUrl: "https://frames-in-blue.vercel.app/bluesplash.png",
+      splashBackgroundColor: "#151515",
     },
   },
 } as const;

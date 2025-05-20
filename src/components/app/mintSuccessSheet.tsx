@@ -20,7 +20,7 @@ export function MintSuccessSheet({
   const handleShare = useCallback(() => {
     sdk.actions.composeCast({
       text: `I just collected ${name} by @priyanka`,
-      embeds: ["https://bbf7c36b-41d9-4f2c-89e4-effcddf0f0b6-00-3tr4td3x18yww.picard.replit.dev/"],
+      embeds: ["frames-in-blue.vercel.app/"],
     });
   }, [name]);
 
