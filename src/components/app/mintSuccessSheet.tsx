@@ -31,7 +31,7 @@ export function MintSuccessSheet({
 
         <div className="flex flex-col items-center pt-4 pb-4">
           <div className="flex items-center gap-1">
-            <span className="text-xl font-semibold">collected!</span>
+            <span className="text-xl font-semibold">thank you for collecting!</span>
           </div>
         </div>
 

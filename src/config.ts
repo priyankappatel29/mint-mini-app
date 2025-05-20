@@ -8,7 +8,7 @@ import { base } from "viem/chains";
 export const mintMetadata = {
   name: "framed in blue #4",
   description:
-    "i'll lead you up, to the highest heavens",
+  `i'll lead you up, \nto the highest heavens.\n\na shared emotional escape from reality.`,
   imageUrl: "https://frames-in-blue.vercel.app/framedinblue4_v.png", // Ensure this path is correct if served from your frontend's public dir
   creator: {
     name: "priyanka",
@@ -118,7 +118,7 @@ export const embedConfig = {
   version: "next",
   imageUrl: "https://frames-in-blue.vercel.app/framedinblue4.png", // This should be the direct URL to the image for the frame
   button: {
-    title: "collect",
+    title: "collect - framed in blue",
     action: {
       type: "launch_frame", // This action type means clicking the button in Farcaster will open another frame
       name: "frames in blue",     // Name for the frame action

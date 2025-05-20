@@ -51,7 +51,7 @@ export function ArtworkCard({
           <div className="flex items-start justify-between mb-4">
             <div className="space-y-1">
               <h1 className="text-xl font-semibold">
-                <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://manifold.gallery/base:0x22fbd94bfc652dcb8b7958dda318566138d4bedc/4" target="_blank" rel="noopener noreferrer">
                   {name}
                 </a>
               </h1>
@@ -84,7 +84,12 @@ export function ArtworkCard({
 
           <p className="text-sm mb-4">
             {isMinting
-              ? description
+              ? description?.split('\n').map((line, index) => (
+                  <span key={index}>
+                    {line}
+                    {index < description.split('\n').length - 1 && <br />}
+                  </span>
+                ))
               : "This mint is closed. Don't miss the next one! Add this frame to get featured mint notifications."}
           </p>
         </div>

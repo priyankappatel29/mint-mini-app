@@ -200,7 +200,7 @@ export function CollectButton({
   };
 
   const isProcessingAnyAction = isCheckingOrProcessingAllowance || isSubmittingTxViaHook || isTxConfirming;
-  let buttonText = "collect";
+  let buttonText = "collect - framed in blue";
 
   if (!isConnected && isMinting) buttonText = "connect wallet";
   else if (!isMinting) buttonText = "Add Frame";

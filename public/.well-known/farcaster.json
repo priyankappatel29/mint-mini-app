@@ -10,7 +10,7 @@
     "iconUrl": "https://frames-in-blue.vercel.app/icon.png",
     "homeUrl": "https://frames-in-blue.vercel.app",
     "imageUrl": "https://frames-in-blue.vercel.app/framedinblue4.png",
-    "buttonTitle": "collect",
+    "buttonTitle": "collect - framed in blue",
     "splashImageUrl": "https://frames-in-blue.vercel.app/splash.png",
     "splashBackgroundColor": "#FFFFFF",
     "webhookUrl": "https://frames-in-blue.vercel.app/api/webhook",
