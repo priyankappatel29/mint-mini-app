@@ -7,11 +7,11 @@
 "frame": {
 "version": "1",
 "name": "frames in blue",
-"iconurl": "https://frames-in-blue.vercel.app/blueicon.png",
+"iconurl": "https://frames-in-blue.vercel.app/icon.png",
 "homeurl": "https://frames-in-blue.vercel.app",
-"imageurl": "https://frames-in-blue.vercel.app/framedinblue4.png",
+"imageurl": "https://frames-in-blue.vercel.app/image.png",
 "buttontitle": "collect",
-"splashimageurl": "https://frames-in-blue.vercel.app/bluesplash.png",
+"splashimageurl": "https://frames-in-blue.vercel.app/splash.png",
 "splashbackgroundcolor": "#FFFFFF",
 "webhookurl": "https://frames-in-blue.vercel.app/api/webhook"
 }

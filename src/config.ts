@@ -123,7 +123,7 @@ export const embedConfig = {
       type: "launch_frame", // This action type means clicking the button in Farcaster will open another frame
       name: "frames in blue",     // Name for the frame action
       url: "https://frames-in-blue.vercel.app", // URL that serves the frame to be opened
-      splashImageUrl: "https://frames-in-blue.vercel.app/bluesplash.png",
+      splashImageUrl: "https://frames-in-blue.vercel.app/splash.png",
       splashBackgroundColor: "#FFFFFF",
     },
   },
