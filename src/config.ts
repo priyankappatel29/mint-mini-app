@@ -124,7 +124,7 @@ export const embedConfig = {
       name: "frames in blue",     // Name for the frame action
       url: "https://frames-in-blue.vercel.app", // URL that serves the frame to be opened
       splashImageUrl: "https://frames-in-blue.vercel.app/bluesplash.png",
-      splashBackgroundColor: "#151515",
+      splashBackgroundColor: "#FFFFFF",
     },
   },
 } as const;
