@@ -1,20 +1,22 @@
-{
-  "accountAssociation": {
-    "header": "eyJmaWQiOjM2MjEsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHgyY2Q4NWEwOTMyNjFmNTkyNzA4MDRBNkVBNjk3Q2VBNENlQkVjYWZFIn0",
-    "payload": "eyJkb21haW4iOiJtaW50LWRlbW8ucmVwbGl0LmFwcCJ9",
-    "signature": "MHhkYTczYjA4MjQ4NmU5NWRjNTJkMjExNTg4NzVhMzA0ZDg2NzBhYTk4YzlhYjdmNDViZWMwZmQzM2M4ZTU4OTQ5MTgzODllYjllMmQ2M2IyZGFkMDM5NDRiYzAzZDA2YjkyYTcxNjZiMmM2ZDA5YmZlZjFkOThjZGI2MGFhYzc2YTFj"
-  },
-  "frame": {
-    "version": "1",
-    "name": "frames in blue",
-    "iconUrl": "https://frames-in-blue.vercel.app/blueicon.png",
-    "homeUrl": "https://frames-in-blue.vercel.app/",
-    "imageUrl": "https://frames-in-blue.vercel.app/framedinblue4_v.png",
-    "buttonTitle": "collect",
-    "splashImageUrl": "https://frames-in-blue.vercel.app/bluesplash.png",
-    "splashBackgroundColor": "#FFFFFF",
-    "description": "an artist owned mini app for manifold claim pages",
-    "tags": ["art", "nft", "photography", "priyanka"],
-    "primaryCategory":"art-creativity"
+  {
+    "accountassociation": {
+      "header": "eyjmawqiojyznzmsinr5cguioijjdxn0b2r5iiwia2v5ijoimhhdodezywe5y0zlyuq0ndi3rdi5mziyn2i1nzi4mdg5zeq0nge4qmu1in0",
+      "payload": "eyjkb21haw4ioijmcmftzxmtaw4tymx1zs52zxjjzwwuyxbwin0",
+      "signature": "mhhhnmywm2y4mdqyotuymju1yjyxzdm0zjlhmtc1ogmyytg2zwy1ntgwzji5mzi3mjnimje1mdfhy2jhmjviztzingy0mtrimmmwogmyyjyxmjdjzdbhodczmjrkmjdimdq3njjhmtg3mwyxmgi1njfjowi3odcymdkwntc0yje0odfj"
+    },
+    
+    "frame": {
+      "version": "1",
+      "name": "frames in blue",
+      "iconurl": "https://frames-in-blue.vercel.app/blueicon.png",
+      "homeurl": "https://frames-in-blue.vercel.app",
+      "imageurl": "https://frames-in-blue.vercel.app/framedinblue4_v.png",
+      "buttontitle": "collect",
+      "splashimageurl": "https://frames-in-blue.vercel.app/bluesplash.png",
+      "splashbackgroundcolor": "#FFFFFF",
+      "webhookurl": "https://frames-in-blue.vercel.app/api/webhook",
+      "description": "an artist owned mini app for manifold claim pages",
+      "tags": ["art", "nft", "photography", "priyanka"],
+      "primaryCategory":"art-creativity"
+    }
   }
-}
