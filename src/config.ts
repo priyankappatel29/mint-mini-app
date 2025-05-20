@@ -1,95 +1,130 @@
+// config.ts
 import type { Abi, Address } from "viem";
-import { base } from "viem/chains";
+import { base } from "viem/chains"; 
 
 /**
- * NFT Metadata Configuration
+ * NFT Metadata Configuration (Remains mostly the same for display)
  */
 export const mintMetadata = {
-  name: "Mini App Mint Demo",
+  name: "framed in blue #4",
   description:
-    "A simple example of an onchain action in a Farcaster mini app. Tap the button below to mint this image.",
-  imageUrl: "https://mint-demo.replit.app/nft.png",
+    "i'll lead you up, to the highest heavens",
+  imageUrl: "/framedinblue4_v.png", // Ensure this path is correct if served from your frontend's public dir
   creator: {
-    name: "horsefacts.eth",
-    fid: 3621,
-    profileImageUrl: "https://imagedelivery.net/BXluQx4ige9GuW0Ia56BHw/27ebb092-6f26-4397-6027-8c90d909ce00/original",
+    name: "priyanka",
+    fid: 6373,
+    profileImageUrl: "https://wrpcd.net/cdn-cgi/imagedelivery/BXluQx4ige9GuW0Ia56BHw/6e9f0068-0e44-4d03-0d25-d498fc309b00/original",
   },
   chain: "Base",
-  priceEth: "0.0004",
+  priceUsdc: "6.29", // USDC price for the mint
+  manifoldFeeEth: "0.0005", // Manifold ETH fee
   startsAt: null,
   endsAt: null,
   isMinting: true,
 } as const;
 
 /**
- * Contract Configuration
+ * USDC Contract Configuration (Using Base Mainnet USDC)
+ */
+export const usdcContractConfig = {
+  // Base Mainnet USDC Contract Address
+  address: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913" as Address,
+  abi: [
+    {
+      inputs: [{ internalType: "address", name: "owner", type: "address" }, { internalType: "address", name: "spender", type: "address" }],
+      name: "allowance",
+      outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [{ internalType: "address", name: "spender", type: "address" }, { internalType: "uint256", name: "value", type: "uint256" }],
+      name: "approve",
+      outputs: [{ internalType: "bool", name: "", type: "bool" }],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+  ] as const,
+  decimals: 6, // USDC typically has 6 decimals
+  // Removed approvalAmount: MAX_UINT256 - this will be handled dynamically
+} as const;
+
+/**
+ * Manifold Claim Contract Configuration
  */
 export const contractConfig = {
-  address: "0x8087039152c472Fa74F47398628fF002994056EA" as Address,
+  // Replace with your actual Manifold Claim Contract address
+  address: "0x26BBEA7803DcAc346D5F5f135b57Cf2c752A02bE" as Address,
   chain: base,
+  // Replace with your actual Creator NFT Contract address
+  creatorContractAddress: "0x22FbD94Bfc652dcb8B7958Dda318566138D4bedC" as Address,
+  // Replace with your actual claim instanceId
+  instanceId: 4214018288,
+  // Replace if your mintIndex is different (often 0 for the first token config)
+  mintIndex: 3,
+
   abi: [
-    { inputs: [], name: "MintPaused", type: "error" },
-    { inputs: [], name: "InvalidPaymentAmount", type: "error" },
-    { inputs: [], name: "SenderNotDirectEOA", type: "error" },
     {
       inputs: [
-        { internalType: "uint256", name: "vectorId", type: "uint256" },
-        { internalType: "uint48", name: "numTokensToMint", type: "uint48" },
-        { internalType: "address", name: "mintRecipient", type: "address" },
+        { internalType: "address", name: "creatorContractAddress", type: "address" },
+        { internalType: "uint256", name: "instanceId", type: "uint256" },
+        { internalType: "uint32", name: "mintIndex", type: "uint32" },
+        { internalType: "bytes32[]", name: "merkleProof", type: "bytes32[]" },
+        { internalType: "address", name: "mintFor", type: "address" }
       ],
-      name: "vectorMint721",
+      name: "mint",
       outputs: [],
       stateMutability: "payable",
       type: "function",
     },
     {
-      anonymous: false,
       inputs: [
+        { internalType: "address", name: "creatorContractAddress", type: "address" },
+        { internalType: "uint256", name: "instanceId", type: "uint256" },
+      ],
+      name: "getClaim",
+      outputs: [
         {
-          indexed: true,
-          internalType: "bytes32",
-          name: "vectorId",
-          type: "bytes32",
-        },
-        {
-          indexed: true,
-          internalType: "address",
-          name: "contractAddress",
-          type: "address",
-        },
-        {
-          indexed: true,
-          internalType: "bool",
-          name: "onChainVector",
-          type: "bool",
-        },
-        {
-          indexed: false,
-          internalType: "uint256",
-          name: "numMinted",
-          type: "uint256",
+          components: [
+            { internalType: "uint32", name: "total", type: "uint32" },
+            { internalType: "uint32", name: "totalMax", type: "uint32" },
+            { internalType: "uint32", name: "walletMax", type: "uint32" },
+            { internalType: "uint48", name: "startDate", type: "uint48" },
+            { internalType: "uint48", name: "endDate", type: "uint48" },
+            { internalType: "enum ILazyPayableClaim.StorageProtocol", name: "storageProtocol", type: "uint8" },
+            { internalType: "bytes32", name: "merkleRoot", type: "bytes32" },
+            { internalType: "string", name: "location", type: "string" },
+            { internalType: "uint256", name: "tokenId", type: "uint256" },
+            { internalType: "uint256", name: "cost", type: "uint256" },
+            { internalType: "address payable", name: "paymentReceiver", type: "address" },
+            { internalType: "address", name: "erc20", type: "address" },
+            { internalType: "address", name: "signingAddress", type: "address" },
+          ],
+          internalType: "struct IERC1155LazyPayableClaim.Claim",
+          name: "claim",
+          type: "tuple",
         },
       ],
-      name: "NumTokenMint",
-      type: "event",
+      stateMutability: "view",
+      type: "function",
     },
-  ] as const as Abi,
-  vectorId: 6506,
-  referrer: "0x075b108fC0a6426F9dEC9A5c18E87eB577D1346a" as Address,
+  ] as const,
 } as const;
 
-/**
- * Farcaster Frame Embed Configuration
+/*
+Farcaster Frame Embed Configuration
  */
 export const embedConfig = {
   version: "next",
-  imageUrl: "https://mint-demo.replit.app/nft.png",
+  imageUrl: "https://bbf7c36b-41d9-4f2c-89e4-effcddf0f0b6-00-3tr4td3x18yww.picard.replit.dev/framedinblue4.png", // This should be the direct URL to the image for the frame
   button: {
-    title: "Mint",
+    title: "collect",
     action: {
-      type: "launch_frame",
-      name: "NFT Mint",
-      url: "https://mint-demo.replit.app/",
+      type: "launch_frame", // This action type means clicking the button in Farcaster will open another frame
+      name: "frames in blue",     // Name for the frame action
+      url: "https://bbf7c36b-41d9-4f2c-89e4-effcddf0f0b6-00-3tr4td3x18yww.picard.replit.dev/", // URL that serves the frame to be opened
+      // splashImageUrl: "/bluesplash.png",
+      // splashBackgroundColor: "#151515",
     },
   },
 } as const;
@@ -100,5 +135,6 @@ export const embedConfig = {
 export const config = {
   ...mintMetadata,
   contract: contractConfig,
+  usdcContract: usdcContractConfig,
   embed: embedConfig,
 } as const;

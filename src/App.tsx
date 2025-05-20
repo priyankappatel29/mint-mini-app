@@ -1,19 +1,19 @@
 import { sdk } from "@farcaster/frame-sdk";
-import { useEffect, useState } from "react";
-
-import { ArtworkCard } from "./components/app/artworkCard";
+import { useEffect, useRef, useState } from "react";
 import { CollectButton } from "./components/app/collectButton";
+import { ArtworkCard } from "./components/app/artworkCard";
 import { MintErrorSheet } from "./components/app/mintErrorSheet";
 import { MintSuccessSheet } from "./components/app/mintSuccessSheet";
 import { mintMetadata } from "./config";
 
 function App() {
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [error, setError] = useState<string>();
+  const buyButtonRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     sdk.actions.ready();
   }, []);
-
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [error, setError] = useState<string>();
 
   return (
     <div className="w-full min-h-screen flex flex-col">
@@ -29,19 +29,24 @@ function App() {
         description={mintMetadata.description}
         isMinting={mintMetadata.isMinting}
       >
+
         <CollectButton
-          priceEth={mintMetadata.priceEth}
+          priceUsdc={mintMetadata.priceUsdc}
+          manifoldFeeEth={mintMetadata.manifoldFeeEth}
           isMinting={mintMetadata.isMinting}
           onCollect={() => setShowSuccess(true)}
           onError={setError}
         />
       </ArtworkCard>
+
+
       <MintSuccessSheet
         isOpen={showSuccess}
         onClose={() => setShowSuccess(false)}
         name={mintMetadata.name}
         imageUrl={mintMetadata.imageUrl}
       />
+
       <MintErrorSheet
         isOpen={!!error}
         onClose={() => setError(undefined)}

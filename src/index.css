@@ -6,18 +6,18 @@
 
 @theme {
   --color-background: #FFFFFF;
-  --color-foreground: #24292E;
+  --color-foreground: #151515;
   --color-card: #FFFFFF;
   --color-mat: #ffffff;
   --color-well: #F3F3F3;
   --color-popover: #FFFFFF;
-  --color-popover-foreground: #24292E;
+  --color-popover-foreground: #151515;
   --color-primary: #7867F6;
   --color-primary-foreground: #FFFFFF;
   --color-active: #DBD4FF;
   --color-active-foreground: #7867F6;
   --color-secondary: #F3F3F3;
-  --color-secondary-foreground: #24292E;
+  --color-secondary-foreground: #151515;
   --color-muted: #8B99A4;
   --color-muted-foreground: #8B99A4;
   --color-destructive: #E11D48;
@@ -31,27 +31,27 @@
 }
 
 @theme dark {
-  --color-background: #242426;
+  --color-background: #FFFFFF;
   --color-foreground: #FFFFFF;
-  --color-card: #242426;
-  --color-mat: rgba(52, 41, 66, 0.50);
+  --color-card: #1d355d;
+  --color-mat: rgba(255, 255, 255, 1);
   --color-well: rgba(0, 0, 0, 0.10);
-  --color-popover: #242426;
-  --color-popover-foreground: #FFFFFF;
-  --color-primary: #342942;
-  --color-primary-foreground: #FFFFFF;
-  --color-active: #342942;
-  --color-active-foreground: #7C65C1;
-  --color-secondary: #242426;
+  --color-popover: #151515;
+  --color-popover-foreground: #2456a9;
+  --color-primary: #ffffff;
+  --color-primary-foreground: #2456a9;
+  --color-active: #ffffff;
+  --color-active-foreground: #2456a9;
+  --color-secondary: #151515;
   --color-secondary-foreground: #FAFAFA;
   --color-muted: #7C8293;
   --color-muted-foreground: #7C8293;
   --color-destructive: #7D1A2C;
   --color-destructive-foreground: #FAFAFA;
-  --color-action: #2A1F33;
-  --color-action-foreground: #7C65C1;
-  --color-border: rgba(52, 41, 66, 0.50);
-  --color-input: #3f3042;
+  --color-action: #ffffff;
+  --color-action-foreground: #2456a9;
+  --color-border: rgba(29, 53, 93, 1.0);
+  --color-input: #2456a9;
   --color-ring: #09090B;
 }
 

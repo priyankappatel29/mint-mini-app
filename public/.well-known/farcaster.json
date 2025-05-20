@@ -6,12 +6,15 @@
   },
   "frame": {
     "version": "1",
-    "name": "Mint Demo",
-    "iconUrl": "https://mint-demo.replit.app/icon.png",
-    "homeUrl": "https://mint-demo.replit.app/",
-    "imageUrl": "https://mint-demo.replit.app/nft.png",
-    "buttonTitle": "Mint",
-    "splashImageUrl": "https://mint-demo.replit.app/icon.png",
-    "splashBackgroundColor": "#ffffff"
+    "name": "frames in blue",
+    "iconUrl": "https://bbf7c36b-41d9-4f2c-89e4-effcddf0f0b6-00-3tr4td3x18yww.picard.replit.dev/blueicon.png",
+    "homeUrl": "https://bbf7c36b-41d9-4f2c-89e4-effcddf0f0b6-00-3tr4td3x18yww.picard.replit.dev/",
+    "imageUrl": "https://bbf7c36b-41d9-4f2c-89e4-effcddf0f0b6-00-3tr4td3x18yww.picard.replit.dev/framedinblue4_v.png",
+    "buttonTitle": "collect",
+    "splashImageUrl": "https://bbf7c36b-41d9-4f2c-89e4-effcddf0f0b6-00-3tr4td3x18yww.picard.replit.dev/bluesplash.png",
+    "splashBackgroundColor": "#FFFFFF",
+    "description": "an artist owned mini app for manifold claim pages",
+    "tags": ["art", "nft", "photography", "priyanka"],
+    "primaryCategory":"art-creativity"
   }
 }

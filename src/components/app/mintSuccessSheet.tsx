@@ -20,30 +20,30 @@ export function MintSuccessSheet({
 }: MintSuccessSheetProps) {
   const handleShare = useCallback(() => {
     sdk.actions.composeCast({
-      text: `I just minted ${name}!`,
-      embeds: ["https://mint-demo.replit.app/"],
+      text: `I just collected ${name} by @priyanka`,
+      embeds: ["https://bbf7c36b-41d9-4f2c-89e4-effcddf0f0b6-00-3tr4td3x18yww.picard.replit.dev/"],
     });
   }, [name]);
 
   return (
     <Drawer open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DrawerContent className="bg-card">
-        <DrawerTitle className="sr-only">Collection Successful</DrawerTitle>
+        <DrawerTitle className="sr-only">collection successful</DrawerTitle>
 
-        <div className="flex flex-col items-center pt-4 pb-8">
+        <div className="flex flex-col items-center pt-4 pb-4">
           <div className="flex items-center gap-1">
-            <CheckCircleIcon
+            {/* <CheckCircleIcon
               className="text-[#43B748]"
               stroke="#43B748"
               strokeWidth={2}
-            />
-            <span className="text-2xl font-semibold">Collected</span>
+            /> */}
+            <span className="text-xl font-semibold">collected!</span>
           </div>
         </div>
 
-        <div className="max-w-[272px] mx-auto w-full">
-          <div className="bg-mat rounded-xl p-2 shadow mb-4">
-            <div className="relative aspect-square w-full rounded-lg overflow-hidden">
+        <div className="max-w-[256px] mx-auto w-full">
+          <div className="bg-mat p-2 shadow mb-4">
+            <div className="relative aspect-[2/3] w-full overflow-hidden">
               <img
                 src={imageUrl}
                 alt={name}
@@ -53,9 +53,9 @@ export function MintSuccessSheet({
           </div>
         </div>
 
-        <div className="mb-8 px-4">
+        <div className="mb-2 px-32">
           <Button className="w-full" onClick={handleShare}>
-            Share
+            share
           </Button>
         </div>
 

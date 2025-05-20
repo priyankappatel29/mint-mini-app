@@ -38,19 +38,23 @@ export function ArtworkCard({
 
   return (
     <>
-      <div className="w-full h-[320px] bg-black relative">
+      <div className="w-[72%] mx-auto aspect-[2/3] mt-[7%] mb-[13%] bg-black relative">
         <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
       </div>
       <div
         className={cn(
-          "rounded-lg border bg-card text-card-foreground shadow-sm flex flex-col -mt-6 relative z-10 flex-grow pb-4",
+          "rounded-tr-3xl border rounded-tl-3xl border bg-card text-card-foreground shadow-sm flex flex-col -mt-6 relative z-10 flex-grow pb-4",
           className,
         )}
       >
-        <div className="p-4">
+        <div className="pl-6 pr-6 pt-6">
           <div className="flex items-start justify-between mb-4">
             <div className="space-y-1">
-              <h1 className="text-xl font-semibold">{name}</h1>
+              <h1 className="text-xl font-semibold">
+                <a href="https://manifold.gallery/base:0x22fbd94bfc652dcb8b7958dda318566138d4bedc/4" target="_blank" rel="noopener noreferrer">
+                  {name}
+                </a>
+              </h1>
               <div className="flex flex-row items-center gap-1">
                 <div className="flex items-center gap-1">
                   <span className="text-sm text-muted">by</span>
