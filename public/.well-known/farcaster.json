@@ -1,18 +1,21 @@
 {
-"accountassociation": {
-"header": "eyjmawqiojyznzmsinr5cguioijjdxn0b2r5iiwia2v5ijoimhhdodezywe5y0zlyuq0ndi3rdi5mziyn2i1nzi4mdg5zeq0nge4qmu1in0",
-"payload": "eyjkb21haw4ioijmcmftzxmtaw4tymx1zs52zxjjzwwuyxbwin0",
-"signature": "mhhhnmywm2y4mdqyotuymju1yjyxzdm0zjlhmtc1ogmyytg2zwy1ntgwzji5mzi3mjnimje1mdfhy2jhmjviztzingy0mtrimmmwogmyyjyxmjdjzdbhodczmjrkmjdimdq3njjhmtg3mwyxmgi1njfjowi3odcymdkwntc0yje0odfj"
-},
-"frame": {
-"version": "1",
-"name": "frames in blue",
-"iconurl": "https://frames-in-blue.vercel.app/icon.png",
-"homeurl": "https://frames-in-blue.vercel.app",
-"imageurl": "https://frames-in-blue.vercel.app/image.png",
-"buttontitle": "collect",
-"splashimageurl": "https://frames-in-blue.vercel.app/splash.png",
-"splashbackgroundcolor": "#FFFFFF",
-"webhookurl": "https://frames-in-blue.vercel.app/api/webhook"
-}
+  "accountAssociation": {
+    "header": "eyJmaWQiOjYzNzMsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHhDODEzYWE5Y0ZlYUQ0NDI3RDI5MzIyN2I1NzI4MDg5ZEQ0NGE4QmU1In0",
+    "payload": "eyJkb21haW4iOiJmcmFtZXMtaW4tYmx1ZS52ZXJjZWwuYXBwIn0",
+    "signature": "MHhhNmYwM2Y4MDQyOTUyMjU1YjYxZDM0ZjlhMTc1OGMyYTg2ZWY1NTgwZjI5MzI3MjNiMjE1MDFhY2JhMjViZTZiNGY0MTRiMmMwOGMyYjYxMjdjZDBhODczMjRkMjdiMDQ3NjJhMTg3MWYxMGI1NjFjOWI3ODcyMDkwNTc0YjE0ODFj"
+  },
+  "frame": {
+    "version": "1",
+    "name": "frames in blue",
+    "iconUrl": "https://frames-in-blue.vercel.app/icon.png",
+    "homeUrl": "https://frames-in-blue.vercel.app",
+    "imageUrl": "https://frames-in-blue.vercel.app/framedinblue4.png",
+    "buttonTitle": "collect",
+    "splashImageUrl": "https://frames-in-blue.vercel.app/splash.png",
+    "splashBackgroundColor": "#FFFFFF",
+    "webhookUrl": "https://frames-in-blue.vercel.app/api/webhook",
+    "description": "an artist owned mini app for manifold claim pages",
+    "tags": ["art", "nft", "photography", "priyanka"],
+    "primaryCategory":"art-creativity"
+  }
 }
