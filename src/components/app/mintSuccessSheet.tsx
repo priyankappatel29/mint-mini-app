@@ -3,7 +3,6 @@ import { useCallback } from "react";
 
 import { Button } from "../ui/button";
 import { Drawer, DrawerContent, DrawerTitle } from "../ui/drawer";
-import { CheckCircleIcon } from "../core/icons";
 
 interface MintSuccessSheetProps {
   isOpen: boolean;
@@ -32,11 +31,6 @@ export function MintSuccessSheet({
 
         <div className="flex flex-col items-center pt-4 pb-4">
           <div className="flex items-center gap-1">
-            {/* <CheckCircleIcon
-              className="text-[#43B748]"
-              stroke="#43B748"
-              strokeWidth={2}
-            /> */}
             <span className="text-xl font-semibold">collected!</span>
           </div>
         </div>

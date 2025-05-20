@@ -13,7 +13,7 @@ import {
 } from "wagmi";
 
 import { config } from "../../config"; // Corrected import
-const { mintMetadata, contract: manifoldContract, usdcContract } = config;
+const { contract: manifoldContract, usdcContract } = config;
 
 import { isUserRejectionError } from "../../lib/errors";
 import { AnimatedBorder } from "../ui/animatedBorder";
@@ -160,7 +160,7 @@ export function CollectButton({
         functionName: "mint",
         args: [
           manifoldContract.creatorContractAddress,
-          manifoldContract.instanceId,
+          BigInt(manifoldContract.instanceId),
           manifoldContract.mintIndex,
           merkleProof,
           connectedAddress,

@@ -1,5 +1,5 @@
 // config.ts
-import type { Abi, Address } from "viem";
+import type { Address } from "viem";
 import { base } from "viem/chains"; 
 
 /**

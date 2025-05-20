@@ -9,7 +9,6 @@ import { mintMetadata } from "./config";
 function App() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [error, setError] = useState<string>();
-  const buyButtonRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     sdk.actions.ready();
