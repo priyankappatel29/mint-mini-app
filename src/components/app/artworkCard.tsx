@@ -19,7 +19,7 @@ interface ArtworkCardProps {
   isMinting: boolean;
   children?: React.ReactNode;
   className?: string;
-  attributes?: { trait_type: string; value: string }[];
+  attributes?: readonly { trait_type: string; value: string }[];
 }
 
 export function ArtworkCard({
@@ -41,7 +41,7 @@ export function ArtworkCard({
     }
   }, [creator.fid]);
 
-  const [mintCount, setMintCount] = useState<number | null>(null);
+  const [mintCount, setMintCount] = useState<bigint | null>(null);
   const publicClient = usePublicClient();
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export function ArtworkCard({
           functionName: "totalSupply",
           args: [config.contract.mintIndex],
         });
-        setMintCount(Number(totalSupply));
+        setMintCount(totalSupply);
       } catch (error) {
         console.error("Error fetching mint count:", error);
       }
@@ -94,7 +94,7 @@ export function ArtworkCard({
                 {/* Mint count goes here, as a sibling to h1 */}
                 {mintCount !== null ? (
                   <p className="text-sm font-semibold text-secondary-foreground">
-                    {mintCount} mints
+                    {mintCount.toString()} mints
                   </p>
                 ) : (
                   <p className="text-sm font-bold text-secondary-foreground">loading...</p>
@@ -141,7 +141,7 @@ export function ArtworkCard({
           <div className="my-3 mx-auto w-full border-t border-primary/50"></div> {/* This div is just the line */}
           {/* --- NEW CODE for ATTRIBUTES --- */}
           {attributes && attributes.length > 0 && ( // Only render if attributes exist
-            <div className="mb-3"> {/* Container for attributes */}
+            <div className="mb-4"> {/* Container for attributes */}
               <h2 className="text-lg font-semibold mb-2 text-card-foreground">attributes</h2> {/* Section title */}
               <div className="space-y-2"> {/* Vertical spacing between attributes */}
                 {attributes.map((attr, index) => (
@@ -153,7 +153,7 @@ export function ArtworkCard({
               </div>
             </div>
           )}
-          <div className="my-1 mx-auto w-full border-t border-primary/50"></div>
+          <div className="my-2 mx-auto w-full border-t border-primary/50"></div>
           {/* --- END NEW CODE for ATTRIBUTES --- */}
         </div>
         {children}
