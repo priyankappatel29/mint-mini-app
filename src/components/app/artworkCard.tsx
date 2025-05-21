@@ -59,7 +59,7 @@ export function ArtworkCard({
             }
           ],
           functionName: "totalSupply",
-          args: [config.contract.mintIndex],
+          args: [BigInt(config.contract.mintIndex)],
         });
         setMintCount(totalSupply);
       } catch (error) {
@@ -145,9 +145,9 @@ export function ArtworkCard({
               <h2 className="text-lg font-semibold mb-2 text-card-foreground">attributes</h2> {/* Section title */}
               <div className="space-y-2"> {/* Vertical spacing between attributes */}
                 {attributes.map((attr, index) => (
-              <div key={index} className="flex items-center gap-34"> {/* Removed justify-between, added gap-6 */}
+              <div key={index} className="flex items-center space-x-16"> {/* Removed justify-between, added gap-6 */}
                 <span className="text-sm text-muted-foreground pl-4 w-1/3 min-w-[100px] flex-shrink-0">{attr.trait_type}</span> {/* Added w-1/3 min-w-[100px] flex-shrink-0 for alignment */}
-                <span className="text-sm text-card-foreground">{attr.value}</span> {/* Removed pr-4 */}
+                <span className="text-sm text-card-foreground pl-18">{attr.value}</span> {/* Removed pr-4 */}
               </div>
                 ))}
               </div>
