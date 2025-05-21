@@ -21,6 +21,14 @@ export const mintMetadata = {
   startsAt: null,
   endsAt: null,
   isMinting: true,
+  attributes: [
+    { trait_type: "Artist", value: "Priyanka" },
+    { trait_type: "Color Palette", value: "Blues" },
+    { trait_type: "Genre", value: "Astro" },
+    { trait_type: "Light", value: "Low Light" },
+    { trait_type: "Location", value: "Alberta" },
+    { trait_type: "Year", value: "2024" },
+  ],
 } as const;
 
 /**
@@ -61,7 +69,7 @@ export const contractConfig = {
   // Replace with your actual claim instanceId
   instanceId: 4214018288,
   // Replace if your mintIndex is different (often 0 for the first token config)
-  mintIndex: 3,
+  mintIndex: 4,
 
   abi: [
     {

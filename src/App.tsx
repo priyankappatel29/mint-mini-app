@@ -27,6 +27,7 @@ function App() {
         chain={mintMetadata.chain}
         description={mintMetadata.description}
         isMinting={mintMetadata.isMinting}
+        attributes={mintMetadata.attributes} // ADD THIS LINE
       >
 
         <CollectButton
