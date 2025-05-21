@@ -223,7 +223,7 @@ export function CollectButton({
               <span className="text-muted text-sm">mint price</span>
               <span className="text-foreground font-medium">{priceUsdc} USDC</span>
             </div>
-            <div className="flex justify-between items-center mb-2 text-sm">
+            <div className="flex justify-between items-center mb-4 text-sm">
               <span className="text-muted text-sm">manifold fee</span>
               <span className="text-foreground font-medium">{manifoldFeeEth} ETH</span>
             </div>
@@ -231,12 +231,12 @@ export function CollectButton({
         )}
         {isProcessingAnyAction ? (
           <AnimatedBorder>
-            <Button className="w-full relative bg-[var(--color-active)] text-[var(--color-active-foreground)]" disabled>
+            <Button className="w-full relative bg-[var(--color-active)] text-[var(--color-active-foreground) rounded-full]" disabled>
               {buttonText}
             </Button>
           </AnimatedBorder>
         ) : (
-          <Button className="w-full" onClick={handleClick} disabled={isProcessingAnyAction || (isConnected && chainId !== manifoldContract.chain.id)}>
+          <Button className="w-full rounded-full" onClick={handleClick} disabled={isProcessingAnyAction || (isConnected && chainId !== manifoldContract.chain.id)}>
             {buttonText}
           </Button>
         )}
